@@ -39,8 +39,7 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: rg-mktDp-eastus-prod-7yt56
           template: ./WindowsVM_ARMTemplate.json
-          parameters: |
-            adminUsername=useradmin1
+          parameters: adminUsername=useradmin1
             adminPassword=Password123$
             location=eastus
             dnsLabelPrefix=winvmeastus7yt56
