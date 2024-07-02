@@ -23,7 +23,7 @@ jobs:
           parameters: adminUsername=useradmin1
                       adminPassword=Password123$
                       location=eastus
-                      type=Microsoft.Compute/virtualMachines
+                      dnsLabelPrefix=winvmeastus7yt56
                       name=winVM1jsonARMDeploy
                       tagsArray='[{"Department":"Marketing","Environment":"Prod","Cost-Center":"CSTPR-MK543","Project":"EcoEnergyCampaign","Team":"IndivResAppDev"}]'
 
