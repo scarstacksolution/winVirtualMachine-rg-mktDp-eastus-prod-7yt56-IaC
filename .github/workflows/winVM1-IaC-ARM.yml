@@ -22,7 +22,7 @@ jobs:
           template: ./WindowsVM_ARMTemplate.json
           parameters: adminUsername=useradmin1
                       adminPassword=Password123$
-                      regionId=eastus
+                      location=eastus
                       type=Microsoft.Compute/virtualMachines
                       name=winVM1jsonARMDeploy
                       tagsArray='[{"Department":"Marketing","Environment":"Prod","Cost-Center":"CSTPR-MK543","Project":"EcoEnergyCampaign","Team":"IndivResAppDev"}]'
