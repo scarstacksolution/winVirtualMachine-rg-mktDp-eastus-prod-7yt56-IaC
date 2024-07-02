@@ -22,7 +22,6 @@ jobs:
           template: ./WindowsVM_ARMTemplate.json
           parameters: adminUsername=useradmin1
                       adminPassword=Password123$
-                      requestSource=IbizaAIExtension
                       regionId=eastus
                       type=Microsoft.Compute/virtualMachines
                       name=winVM1jsonARMDeploy
