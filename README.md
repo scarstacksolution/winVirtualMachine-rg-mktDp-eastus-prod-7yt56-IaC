@@ -13,36 +13,41 @@ Steps:
 - Update the name of the YAML File as: winVM1-IaC-ARM
 - Upload the below content into the YAML File main field area:
 
-on: [push]
-name: Azure ARM
-jobs:
-    build-and-deploy:
-      runs-on: ubuntu-latest
-      steps:
+Here is the YAML formatted content for the given configuration:
 
-        # Checkout code
+```yaml
+name: Azure ARM
+
+on: [push]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout code
       - uses: actions/checkout@main
 
-        # Log into Azure
+      # Log into Azure
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-        # Deploy ARM template
+      # Deploy ARM template
       - name: Run ARM deploy
         uses: azure/arm-deploy@v1
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: rg-mktDp-eastus-prod-7yt56
           template: ./WindowsVM_ARMTemplate.json
-          parameters: adminUsername=useradmin1
-                      adminPassword=Password123$
-                      location=eastus
-                      dnsLabelPrefix=winvmeastus7yt56
+          parameters: |
+            adminUsername=useradmin1
+            adminPassword=Password123$
+            location=eastus
+            dnsLabelPrefix=winvmeastus7yt56
 
-        # output containerName variable from template
+      # Output containerName variable from template
       - run: echo ${{ steps.deploy.outputs.containerName }}
-
+```
 
 - From the YAML contant above, "WindowsVM_ARMTemplate.json" is the name of your ARM Template file and "winvmeastus7yt56" is used to definte the DNS Name label for the Virtual machine being deployed.
 - Parameters that can be added in the YAML File above for a Virtual Machine ARM Deployment are: OSVersion, adminPassword, adminUsername, dnsLabelPrefix, location, publicIPAllocationMethod, publicIpName, publicIpSku, securityType, vmName, vmSize.
