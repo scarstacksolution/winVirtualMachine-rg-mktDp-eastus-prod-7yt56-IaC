@@ -20,7 +20,8 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: rg-mktDp-eastus-prod-7yt56
           template: ./WindowsVM_ARMTemplate.json
-          parameters: workspaceResourceId=9410b8c3-1d9c-4c48-b3d5-9dc61afd4a68
+          parameters: adminUsername=useradmin1
+                      adminPassword=Password123$
                       requestSource=IbizaAIExtension
                       regionId=eastus
                       type=Microsoft.Compute/virtualMachines
