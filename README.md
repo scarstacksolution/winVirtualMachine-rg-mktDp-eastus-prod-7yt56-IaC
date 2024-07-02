@@ -12,14 +12,43 @@ Steps:
 - Navigate to the "Actions" Tab of the Repository and click "set up a workflow yourself" to create a YAML File.
 - Update the name of the YAML File as: winVM1-IaC-ARM
 - Upload the below content into the YAML File main field area:
-- 
-Xxxxxxx
+
+on: [push]
+name: Azure ARM
+jobs:
+    build-and-deploy:
+      runs-on: ubuntu-latest
+      steps:
+
+        # Checkout code
+      - uses: actions/checkout@main
+
+        # Log into Azure
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+        # Deploy ARM template
+      - name: Run ARM deploy
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+          resourceGroupName: rg-mktDp-eastus-prod-7yt56
+          template: ./WindowsVM_ARMTemplate.json
+          parameters: adminUsername=useradmin1
+                      adminPassword=Password123$
+                      location=eastus
+                      dnsLabelPrefix=winvmeastus7yt56
+
+        # output containerName variable from template
+      - run: echo ${{ steps.deploy.outputs.containerName }}
+
 
 - Observe the following areas/lines the file above pasted:
-        1.	Line 22: WindowsVM_ARMTemplate.json is the name of your ARM Template file
-        2.      Line 26: Microsoft.Compute/virtualMachines defined the type of cloud resource you are deploying and can be gotten from the actual ARM Template file
-        3.	Line 28: winVM1jsonARMDeploy
-  
+        1.	Line 22: WindowsVM_ARMTemplate.json is the name of your ARM Template file.
+        2.      Line 26: winvmeastus7yt56 is used to definte the DNS Name label to be configured for the Virtual machine being deployed.
+
+- NOTE: Other "parameters" that can be added in the YAML File for a Virtual Machine Deployment are: OSVersion, adminPassword, adminUsername, dnsLabelPrefix, location, publicIPAllocationMethod, publicIpName, publicIpSku, securityType, vmName, vmSize
 
 
 
