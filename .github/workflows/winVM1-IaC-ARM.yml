@@ -24,7 +24,6 @@ jobs:
                       adminPassword=Password123$
                       location=eastus
                       dnsLabelPrefix=winvmeastus7yt56
-                      tagsArray='[{"Department":"Marketing","Environment":"Prod","Cost-Center":"CSTPR-MK543","Project":"EcoEnergyCampaign","Team":"IndivResAppDev"}]'
 
         # output containerName variable from template
       - run: echo ${{ steps.deploy.outputs.containerName }}
