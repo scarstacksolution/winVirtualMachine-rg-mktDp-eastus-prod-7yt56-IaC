@@ -44,8 +44,8 @@ jobs:
       - run: echo ${{ steps.deploy.outputs.containerName }}
 
 
-- From the file contants above, "WindowsVM_ARMTemplate.json" is the name of your ARM Template file and "winvmeastus7yt56: is used to definte the DNS Name label for the Virtual machine being deployed.
-- Finally, parameters that can be added in the YAML File above for a Virtual Machine ARM Deployment are: OSVersion, adminPassword, adminUsername, dnsLabelPrefix, location, publicIPAllocationMethod, publicIpName, publicIpSku, securityType, vmName, vmSize.
+- From the YAML contant above, "WindowsVM_ARMTemplate.json" is the name of your ARM Template file and "winvmeastus7yt56" is used to definte the DNS Name label for the Virtual machine being deployed.
+- Parameters that can be added in the YAML File above for a Virtual Machine ARM Deployment are: OSVersion, adminPassword, adminUsername, dnsLabelPrefix, location, publicIPAllocationMethod, publicIpName, publicIpSku, securityType, vmName, vmSize.
 
 
 
