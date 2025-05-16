@@ -127,7 +127,7 @@
       "storageAccountName": "[format('bootdiags{0}', uniqueString(resourceGroup().id))]",
       "nicName": "myVMNic",
       "addressPrefix": "10.0.0.0/16",
-      "subnetName": "Subnet",
+      "subnetName": "defaultSubnet",
       "subnetPrefix": "10.0.0.0/24",
       "virtualNetworkName": "MyVNET",
       "networkSecurityGroupName": "default-NSG",
